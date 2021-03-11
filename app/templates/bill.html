@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% block title %}Bill{% endblock title %}
+{% block body %}
+{% load mathfilters %}
+<nav aria-label="breadcrumb" class="give_color font" >
+
+    <center><h1 style="color:white; font-weight: bold; padding:10px;">Bill</h1><center>
+
+</nav>
+<div class="container" style="margin-top:15px;">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12 font">
+                    <h3 style="margin-bottom: 25px;"><u>Personal Details</u></h3>
+                    <form id = "final" method="post" action="">
+                        {% csrf_token %}
+                        <label
+                            for="name">Name:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="name" name="name" value="{{info.name}}" 
+                            style="background-color: white;color:black;border:none;" size="40" readonly="readonly"><br>
+                        <label
+                            for="email">Email:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="email" name="email" value="{{info.email}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label for="address">Shipping Address:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="address" name="address" value="{{info.address}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label
+                            for="country">Country:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="country" name="country" value="{{info.country}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label
+                            for="state">State:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="state" name="state" value="{{info.state}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label for="mobile">Mobile
+                            No:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="mobile" name="mobile" value="{{info.mobilenumber}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label
+                            for="pincode">Pincode:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="pincode" name="pincode" value="{{info.pincode}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                        <label for="payment">Payment Method:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input id="payment" name="payment" value="{{info.payment}}" 
+                            style="background-color: white;color:black;border:none;" size="40"  readonly="readonly"><br>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 150px;">
+                <div class="col-md-12 cart">
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        {% if x != 0 %}
+                        {% for i in itm %}
+                        <tr>
+                            <td>
+                                <div class="cart-info">
+                                    <img src="{{i.0.image}}">
+                                    <div>
+                                        <p>{{i.0.name}}</p>
+                                        <small>Rs {{i.0.price}}</small><br>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{i.1}}</td>
+                            <td>{{i.0.price|mul:i.1}}.00/-</td>
+                            {% endfor %}
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card font" style="float: left;">
+                <img src="https://www.intheblack.com/-/media/intheblack/allimages/magazine-2020/03-march/illustration-payment-options.jpg?rev=fc8731f71a604d1fb1361e22cde4d32c"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Place your Order</h5>
+                    <p class="card-text">Order Summary</p>
+                    <div>
+                        <label>
+                            <h6 class="card-text">Items : {{tq}}</h6>
+                        </label>
+                    </div>
+                    <h6 class="card-text">Quantity : {{total}}</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> Total:<strong>{{total_price_vat}}.00/-</strong></li>
+                    <li class="list-group-item">Delivery:<strong>Tommorrow</strong> </li>
+                </ul>
+                <div class="card-body">
+                    <button class="btn btn-sm btn-success float-right"><i class=""></i>Continue Payment</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</form>
+{% endblock body %}

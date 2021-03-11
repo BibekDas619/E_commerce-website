@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% block title %}Product Description{% endblock title %}
+{% block body %}
+<div class="container" style="margin-bottom: 20px;margin-top:20px;">
+	<div class="row">
+	  <div class="col-md-12">
+		<center><p style="font-family: 'Lobster', cursive;font-size:50px;">Product Description</p></center>
+	  </div>
+	</div>
+</div>
+
+ <div class="container">
+ 	<div class="row">
+ 		<div class="col-md-4">
+ 			<img src={{x.image}} class="img-thumbnail" style="height:300px;width:700px;box-shadow: 10px 10px 10px lightgrey;">
+ 		</div>
+ 		<div class="col-md-8">
+ 			<div class="row">
+ 				<div class="col-md-12">
+ 			      <p style="font-size: 50px;text-align: center;">{{x.name}}</p>
+ 			  </div>
+ 			</div>
+
+ 			<div class="row">
+ 				<div class="col-md-6">
+ 			      <p style="font-size: 30px;float: right">Price:</p>
+ 			    </div>
+ 			    <div class="col-md-6">
+ 			    	<p style="font-size: 30px;float: left;">₹{{x.price}}.00/-</p>
+ 			    </div>
+ 			</div>
+
+			 <div class="row">
+ 				<div class="col-md-12">
+ 			      <p style="font-size: 20px;text-align: center;margin-left:150px;margin-right:150px; ">{{x.description}}</p>
+ 			    </div>
+ 			</div>
+
+ 			<div class="row">
+ 				<div class="col-md-12">
+ 			      <p style="font-size: 20px;text-align: center;margin-left:150px;margin-right:150px; ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum nibh efficitur consequat dapibus. Aenean lacus sem</p>
+ 			    </div>
+ 			</div>
+ 			<br>
+ 			<div class="row">
+ 				<div class="col-md-6">
+				   <select name="quantity" id="select" style="float:right;" onchange="change()">
+					   <option disabled selected>Select quantity</option>
+					   {% if product_stock < 10 %}
+						   {% for i in lst %}
+						   <option value={{i}}>{{i}}</option>
+						   {% endfor %}
+						{% else %}
+						    <option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+
+						{% endif %}
+                   </select>
+                   <p style="float: right;margin-right: 10px;">QTY: </p>
+ 				</div>
+ 			</div>
+                
+            <br>
+
+ 			<div class="row">
+ 				<div class="col-md-6">
+ 					<a href="" style="color:white; float:right;" class="btn btn-success" id="{{x.id}}" onclick="buynow(this.id)"><i class="fas fa-money-bill-alt"></i>Buy Now!</a>
+ 					
+ 				</div>
+ 				<div class="col-md-6">
+					 
+					 <button type="submit" class="btn btn-primary cart" id="{{x.id}}" onclick="item(this.id)"style="float:left;">
+						<i class="fas fa-cart-plus"></i> Add to cart
+					</button>
+ 				</div>
+ 			</div>
+
+
+ 		</div>
+ 	</div>
+ </div>
+{% endblock body %}

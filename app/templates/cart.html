@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block title %}Cart{% endblock title %}
+{% block body %}
+{% load mathfilters %}
+<div class="container fluid">
+    <h2 style="margin-top:30px; margin-left: 80px; font-weight: bold;">Cart has {{ total }} items</h2>
+    <div class="row">
+
+        <div class="col-md-10 col-11 mx-auto">
+
+            <div class="row mt-5 gx-3">
+
+                <!--left side div!-->
+                <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
+                {% if x != 0 %}
+                
+                    {% for i in itm %}
+                    <div class="card p-4" id="item{{i.0.id}}">
+
+                        <div class="row">
+
+
+                            <!--cart images div!-->
+
+                            <div
+                                class="col-md-5 col-11 mx-auto bg-light d-flex judtify-content-center align-items-center shadow product_img">
+                                <img src="{{i.0.image}}" class="img-thumbnail" style="height:100%;width:100%;"
+                                    alt="cart img">
+                            </div>
+                            <!--cart product details!-->
+                            <div class="col-md-7 col-11 mx-auto px-4 mt-2">
+                                <div class="row">
+                                    <div class="col-6 card-title">
+                                        <h1 class="mb-4 product_name">{{i.0.name}}</h1>
+                                        <p class="mb-2">Product description: {{i.0.description}}</p>
+                                        <p class="mb-2">Total quantity: {{i.1}}</p>
+                                        <p class="mb-3">Total Price of the product: {{i.0.price|mul:i.1}}  </p>
+                                        {% if i.2 < 10 %}
+                                          {% if i.2 == 0 %}
+                                          <p class="mb-3" style="color:red;font-size: 26px;font-weight: bold;">Out of Stock!</p>
+                                          {% else %}
+                                          <p class="mb-3" style="color:red;font-size: 26px;font-weight: bold;">Hurry only {{i.2}} pieces are left!</p>
+                                          {% endif %}
+                                        {% else %}
+                                        <p class="mb-3" style="color:green;font-size: 26px;font-weight: bold;">In Stock!</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 d-flex justify-content-between remove_wish">
+                                        <button class = "btn btn-primary" id="{{i.0.id}}" onclick="del_item(this.id)"><p style="color:white;"><i class="fas fa-trash-alt"></i> REMOVE ITEM </p></button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                 {% endif %}
+                    <hr />
+
+                </div>
+                <!--right side div!-->
+                <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+                    <div class="right_side p-3 shadow bg-white">
+                        <h2 class="product_name mb-5"> The Total Amount Of</h2>
+                        <div class="price_indiv d-flex justify-content-between">
+                            <p>Product amount</p>
+                            <p>₹<span id="product_total_amt">{{total_price}}.00</span>/-</p>
+                        </div>
+                        <div class="price_indiv d-flex justify-content-between">
+                            <p>Shipping charge</p>
+                            <p>₹<span id="shipping_charge">25.00</span>/-</p>
+                        </div>
+                        <hr />
+                        <div class="total-amt d-flex justify-content-between font-weight-bold">
+                            <p>The total amount of (including VAT)</p>
+                            <p>₹<span id="total_cart_amt">{{total_price_vat}}.00</span>/-</p>
+                        </div>
+                        {% if total_price_vat == 0 %}
+                        <button class="btn btn-primary text-uppercase" disabled>Proceed to buy</button>
+                        {% elif 0 in all_stocks %}
+                        <button class="btn btn-primary text-uppercase" disabled>Proceed to buy</button>
+                        {% else %}
+                        <a class="btn btn-primary text-uppercase" href="/checkout" style="text-decoration: none;color: white;">Proceed to buy</a>
+                        {% endif %}
+                    </div>
+                    <!--discount code part!-->
+                    <div class="discount_code mt-3 shadow">
+                        <div class="card">
+                            <div class="card-body">
+                                <a class="d-flex judtify-content-between" data-toggle="collapse" href="#collapseExample"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    Add a discount code(optional)
+                                    <span><i class="fas fa-chevron-down pt-1"></i></span>
+                                </a>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="mt-3">
+                                        <input type="text" name="" id="discount_code1"
+                                            class="form-control font-weight-bold" placeholder="Enter the discount code">
+                                        <small id="error_trw" class="text-dark mt-3"> code is galleria</small>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3" onclick="discount_code()">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--discount code end!-->
+                    <div class="mt-3 shadow p-3 bg-white">
+                        <div class="pt-4">
+                            <h5 class="mb-4">Expected delivery</h5>
+                            <p>By tomorrow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Galleria</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Overpass:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/743/743007.svg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+    .cart {
+      margin: 70 px auto;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .cart-info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    th {
+      text-align: left;
+      padding: 5px;
+      color: #fff;
+      background-image: linear-gradient(to bottom right, #F78605, #77F705);
+      font-weight: normal;
+    }
+
+    td {
+      padding: 10px 5px;
+
+    }
+
+    td input {
+      width: 40px;
+      height: 30px;
+      padding: 2px;
+    }
+
+    td img {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      padding: 5px;
+    }
+
+    td a {
+      color: blue;
+    }
+
+    .give_color {
+      background-image: linear-gradient(to bottom right, #F78605, #77F705);
+    }
+
+    .font {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .give_color {
+      background-image: linear-gradient(to bottom right, #F78605, #77F705);
+      margin-bottom: 0;
+    }
+
+    .padding {
+      padding: 5px !important;
+    }
+
+    .card {
+      margin-bottom: 4px;
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+
+      min-width: 10px;
+      word-wrap: break-word;
+      background-color: white;
+      background-clip: border-box;
+      border: 1px solid blue;
+      border-radius: .25rem;
+
+    }
+
+    .card-header {
+      padding: .75rem 1.25rem;
+      margin-bottom: 0px;
+    }
+
+    .card-content {
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+    .form-content {
+      color: black !important;
+      background-color: white !important;
+      border-radius: #c8ced3 !important;
+      outline: 0px;
+      box-shadow: 0 0 0 #f44436 !important;
+
+    }
+
+    .btn-warning {
+      color: #fff;
+    }
+
+    .font {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Mulish', sans-serif;
+    }
+
+    :root {
+      --text-clr: #4f4f4f;
+    }
+
+    p {
+      color: #6c757d;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--text-clr);
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: var(--text-clr);
+    }
+
+    h2 {
+      color: var(--text-clr);
+      font-size: 1.5rem;
+    }
+
+    .main_cart {
+      background: #fff;
+      font-size: 1.5rem;
+
+    }
+
+    .card {
+      border: none;
+
+    }
+
+    .product_img {
+      min-width: 200px;
+      max-height: 200px;
+    }
+
+    .product_name {
+      color: black;
+      font-size: 1.4rem;
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+
+    .card-title p {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .remove_wish p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+
+    .price_money h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .set_quantity {
+      position: relative;
+      font-size: 0.8rem;
+    }
+
+    .set_quantity::after {
+      content: "(Note, 1 piece)";
+      width: auto;
+      height: auto;
+      text-align: center;
+      position: absolute;
+      bottom: -20px;
+      right: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .page-link {
+      line-height: 16px;
+      width: 45px;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #495057;
+    }
+
+    .page-link input {
+      line-height: 22px;
+      padding: 3px;
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-link:hover {
+      text-decoration: none;
+      color: #495057;
+      outline: none !important;
+    }
+
+    .page-link :focus {
+      box-shadow: none;
+    }
+
+    .price_indiv p {
+      font-size: 1.1rem;
+    }
+
+    .fa-heart :hover {
+      color: red;
+    }
+
+    .navbar-custom {
+      background-image: linear-gradient(to right, #FE4D70, #FFB747);
+    }
+
+    .products {
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #f4f4f4;
+      height: 90px;
+      color: #04519b;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 30px;
+      border-top: 7px solid #04519b;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 350px;
+    }
+
+    ul li {
+      float: left;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #product:hover {
+      box-shadow: 10px 10px 10px lightgray;
+      cursor: pointer;
+
+    }
+
+    .cart_products_count {
+      height: 19px;
+      width: 16px;
+      position: absolute;
+      top: 20px;
+      margin-left: 20px;
+    }
+
+  #products {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#products td, #products th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#products tr:hover {background-color: #ddd;}
+
+#products th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom bg-light">
+    <a class="navbar-brand" href="/admin_panel"
+      style="font-family: 'Balsamiq Sans', cursive; font-size: 50px;margin:auto;color: white;">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/admin_panel"><span
+            style="font-family: Ubuntu,sans-serif;font-size: 23px;">Users</span></a>
+        <a class="nav-link active" href="/all_products"><span
+            style="font-family:Ubuntu,sans-serif;font-size: 23px;">Products</span></a>
+        <a class="nav-link" href="/all_orders"><span
+              style="font-family:Ubuntu,sans-serif;font-size: 23px;">Orders</span></a>
+        <a class="nav-link" href="/add_products"><span
+                style="font-family:Ubuntu,sans-serif;font-size: 23px;">Add Products</span></a>
+      </div>
+      <div class="navbar-nav ml-auto">
+
+      </div>
+    </div>
+  </nav>
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+
+
+  <table id="products">
+    <tr>
+      <th>Product Image</th>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Edit Product</th>
+      <th>Delete Product</th>
+    </tr>
+    {% for i in products %}
+    <tr>
+      <td><img src="{{i.image}}" style="height: 200px;width: 200px;padding:10px;margin:0"></td>
+      <td>{{i.name}}</td>
+      <td>{{i.description}}</td>
+      <td>{{i.price}}</td>
+      <td>{{i.stock}} pieces</td>
+      <td><a href="/product/{{i.id}}"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHJGg3-LwenVViNgA8fmE_t03tJ9w3m-2XkQ&usqp=CAU" style="height:50px;width:50px;margin:auto;"></a></td>
+      <td><a href="/product_delete/{{i.id}}"><img src= "https://e7.pngegg.com/pngimages/854/935/png-clipart-computer-icons-scalable-graphics-icon-design-delete-button-logo-sign-thumbnail.png"
+        style="height:50px;width:50px;margin:auto;"></a></td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
